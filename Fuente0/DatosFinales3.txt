@@ -1,0 +1,11 @@
+La secuencia es: 
+c c a b d d c f d e c c c d c e f e c f e c c f c c c f f c c a c e e c c c c c a c c d c c f e e 
+La cantidad de informacion es: 
+Suceso: a-->Probabilidad: 0.0838-->Cantidad informacion: 3.5769059458500982
+Suceso: b-->Probabilidad: 0.0459-->Cantidad informacion: 4.445362036135641
+Suceso: c-->Probabilidad: 0.529-->Cantidad informacion: 0.9186603725480612
+Suceso: d-->Probabilidad: 0.0523-->Cantidad informacion: 4.2570452433025086
+Suceso: e-->Probabilidad: 0.099-->Cantidad informacion: 3.3364276645824775
+Suceso: f-->Probabilidad: 0.158-->Cantidad informacion: 2.662003536484984
+Suceso: g-->Probabilidad: 0.032-->Cantidad informacion: 4.965784284662087
+La entropia es 2.1222096336909897

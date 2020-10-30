@@ -11,6 +11,24 @@ public class Prueba {
     private static int cantsimbolosgenerar = 0;
 
     public static void main(String[] args) {
+        ClassCodificacion cc=new ClassCodificacion(".\\Codificacion\\DatosIniciales.txt",
+                ".\\Codificacion\\DatosFinales.txt");
+        cc.inicio();
+        ClassMakarov cm1=new ClassMakarov(".\\Makarov\\DatosIniciales1.txt",
+                ".\\Makarov\\DatosFinales1.txt");
+        ClassMakarov cm2=new ClassMakarov(".\\Makarov\\DatosIniciales2.txt",
+                ".\\Makarov\\DatosFinales2.txt");
+        cm1.inicio();
+        cm2.inicio();
+        ClassFuente0 cf1=new ClassFuente0(".\\Fuente0\\DatosIniciales1.txt",
+                ".\\Fuente0\\DatosFinales1.txt");
+        ClassFuente0 cf2=new ClassFuente0(".\\Fuente0\\DatosIniciales2.txt",
+                ".\\Fuente0\\DatosFinales2.txt");
+        ClassFuente0 cf3=new ClassFuente0(".\\Fuente0\\DatosIniciales3.txt",
+                ".\\Fuente0\\DatosFinales3.txt");
+        cf1.inicio();
+        cf2.inicio();
+        cf3.inicio();
         System.out.println("ingrese cantidad de simbolos de la fuente");
         cantsimb = lector.nextInt();
         System.out.println("ingrese las probabilidades de cada uno de los simbolos");

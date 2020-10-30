@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ejercicio20guia2tdelainfo" />
+        <module name="teoria_de_la_info" />
       </profile>
     </annotationProcessing>
   </component>
