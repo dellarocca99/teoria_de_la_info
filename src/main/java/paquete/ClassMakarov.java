@@ -84,8 +84,8 @@ public class ClassMakarov {
     		double[][]mataux= new double[this.matTransitiva[0].length][this.matTransitiva[0].length];
     		for(int i=0; i<this.matTransitiva[0].length; i++) {
     			for(int j=0; j<this.matTransitiva[0].length; j++) {
-    				mataux[i][j]= matTransitiva[i][0]*mat[0][j];
-    				for(int cont=1; cont<cantestados; cont++) {
+    				mataux[i][j]= matTransitiva[i][0]*matTransitiva[0][j];
+    				for(int cont=1; cont<this.matTransitiva[0].length; cont++) {
     					mataux[i][j]= mataux[i][j] + matTransitiva[i][cont]*matTransitiva[cont][j]; 
     				}
     			}
