@@ -78,20 +78,32 @@ public class ClassMakarov {
         }
     }
     private void calcularVecEstacionario(int n,double exactitud){
-        double matTemp1[][]=this.matTransitiva;
-        double matTemp2[][];
-        for(int i=0;i<n;i++){
-            matTemp2=matTemp1;
-            matTemp1=multiplicarMatrices(matTemp1,matTemp2);
-        }
+        
+       
+        for(int t=0; t<N; t++) {
+    		double[][]mataux= new double[this.matTransitiva[0].length][this.matTransitiva[0].length];
+    		for(int i=0; i<this.matTransitiva[0].length; i++) {
+    			for(int j=0; j<this.matTransitiva[0].length; j++) {
+    				mataux[i][j]= matTransitiva[i][0]*mat[0][j];
+    				for(int cont=1; cont<cantestados; cont++) {
+    					mataux[i][j]= mataux[i][j] + matTransitiva[i][cont]*matTransitiva[cont][j]; 
+    				}
+    			}
+    		}
+    		for(int i=0; i<this.matTransitiva[0].length; i++) {
+    			for(int j=0; j<this.matTransitiva[0].length; j++) {
+    				matTransitiva[i][j]= mataux[i][j];
+    			}
+    		}
+    	}
 
         int i=0,j=0;
         double aux1,aux2;
         boolean follow=true;
         while(i<this.matTransitiva[0].length && follow){
             while(j<this.matTransitiva.length-1 && follow){
-                aux1=matTemp1[i][j];
-                aux2=matTemp1[i][j+1];
+                aux1=matTransitiva[i][j];
+                aux2=matTransitiva[i][j+1];
                 if(Math.abs(aux2-aux1)>exactitud){
                     follow=false;
                 }
@@ -100,8 +112,8 @@ public class ClassMakarov {
             i++;
         }
         if(follow){
-            for(n=0;n<this.matTransitiva[0].length;n++){
-                vecEstacionario.add(matTemp1[n][1]);
+            for(int i=0;i<this.matTransitiva[0].length;i++){
+                vecEstacionario.add(matTransitiva[i][1]);
             }
         }
     }
@@ -148,19 +160,6 @@ public class ClassMakarov {
             aux+=this.vecEstacionario.get(i)*vecSuma[i];
         }
         this.entropia=aux;
-    }
-    private double[][] multiplicarMatrices(double[][] a, double[][] b) {
-        double[][] c = new double[a.length][b[0].length];
-        if (a[0].length == b.length) {
-            for (int i = 0; i < a.length; i++) {
-                for (int j = 0; j < b[0].length; j++) {
-                    for (int k = 0; k < a[0].length; k++) {
-                        c[i][j] += a[i][k] * b[k][j];
-                    }
-                }
-            }
-        }
-        return c;
     }
 
 }
