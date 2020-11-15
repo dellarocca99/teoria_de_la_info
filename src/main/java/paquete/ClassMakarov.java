@@ -55,7 +55,7 @@ public class ClassMakarov {
         }
     }
     private void calculos(){
-        this.calcularVecEstacionario(20,0.01);
+        this.calcularVecEstacionario(20,0.1);
         this.calcularEntropia();
     }
     private void writeFile(){
@@ -77,7 +77,7 @@ public class ClassMakarov {
             e.printStackTrace();
         }
     }
-    private void calcularVecEstacionario(int n,double exactitud){
+    private void calcularVecEstacionario(int N,double exactitud){
         
        
         for(int t=0; t<N; t++) {
@@ -112,8 +112,8 @@ public class ClassMakarov {
             i++;
         }
         if(follow){
-            for(int i=0;i<this.matTransitiva[0].length;i++){
-                vecEstacionario.add(matTransitiva[i][1]);
+            for(int k=0;k<this.matTransitiva[0].length;k++){
+                vecEstacionario.add(matTransitiva[k][1]);
             }
         }
     }

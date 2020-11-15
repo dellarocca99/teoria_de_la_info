@@ -1,8 +1,16 @@
-La secuencia es: 
-b c c c c c c b c b c c c c b c c c c b a c a b c c c b c c b b b c b c c c b c c c c c c 
+Resultados Teoricos:
 La cantidad de informacion es: 
 Suceso: a-->Probabilidad: 0.0252-->Cantidad informacion: 5.310432456049533
 Suceso: b-->Probabilidad: 0.315-->Cantidad informacion: 1.6665762662748083
 Suceso: c-->Probabilidad: 0.54-->Cantidad informacion: 0.8889686876112561
 Suceso: d-->Probabilidad: 0.1198-->Cantidad informacion: 3.061300186760664
 La entropia es 1.505581275453019
+Resultados Practicos de la secuencia generada: 
+
+La cantidad de informacion es: 
+
+Suceso: a-->Apariciones: 2513-->Probabilidad: 0.02513-->Cantidad informacion: 5.314445518556156
+Suceso: b-->Apariciones: 31392-->Probabilidad: 0.31392-->Cantidad informacion: 1.6715311482175732
+Suceso: c-->Apariciones: 54159-->Probabilidad: 0.54159-->Cantidad informacion: 0.8847269938688374
+Suceso: d-->Apariciones: 11936-->Probabilidad: 0.11936-->Cantidad informacion: 3.0666086541815742
+La entropia es 1.5034687755023133

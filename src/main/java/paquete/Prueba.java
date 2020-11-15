@@ -21,11 +21,11 @@ public class Prueba {
         cm1.inicio();
         cm2.inicio();
         ClassFuente0 cf1=new ClassFuente0(".\\Fuente0\\DatosIniciales1.txt",
-                ".\\Fuente0\\DatosFinales1.txt");
+                ".\\Fuente0\\DatosFinales1.txt",".\\Fuente0\\Secuencia1.txt");
         ClassFuente0 cf2=new ClassFuente0(".\\Fuente0\\DatosIniciales2.txt",
-                ".\\Fuente0\\DatosFinales2.txt");
+                ".\\Fuente0\\DatosFinales2.txt",".\\Fuente0\\Secuencia2.txt");
         ClassFuente0 cf3=new ClassFuente0(".\\Fuente0\\DatosIniciales3.txt",
-                ".\\Fuente0\\DatosFinales3.txt");
+                ".\\Fuente0\\DatosFinales3.txt",".\\Fuente0\\Secuencia3.txt");
         cf1.inicio();
         cf2.inicio();
         cf3.inicio();
