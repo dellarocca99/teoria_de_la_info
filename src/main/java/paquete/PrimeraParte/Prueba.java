@@ -1,4 +1,4 @@
-package paquete;
+package paquete.PrimeraParte;
 
 import java.util.Scanner;
 

@@ -10,9 +10,9 @@ Resultados Practicos de la secuencia generada:
 
 La cantidad de informacion es: 
 
-Suceso: a-->Apariciones: 11548-->Probabilidad: 0.11548-->Cantidad informacion: 3.1142850822008303
-Suceso: b-->Apariciones: 1973-->Probabilidad: 0.01973-->Cantidad informacion: 5.663465233713253
-Suceso: c-->Apariciones: 40052-->Probabilidad: 0.40052-->Cantidad informacion: 1.3200538093560117
-Suceso: d-->Apariciones: 13396-->Probabilidad: 0.13396-->Cantidad informacion: 2.9001258137300963
-Suceso: e-->Apariciones: 33031-->Probabilidad: 0.33031-->Cantidad informacion: 1.5981074476011279
-La entropia es 1.9164574871013962
+Suceso: a-->Apariciones: 11378-->Probabilidad: 0.11378-->Cantidad informacion: 3.135681108742051
+Suceso: b-->Apariciones: 1860-->Probabilidad: 0.0186-->Cantidad informacion: 5.748553568441419
+Suceso: c-->Apariciones: 40354-->Probabilidad: 0.40354-->Cantidad informacion: 1.3092164103769643
+Suceso: d-->Apariciones: 13297-->Probabilidad: 0.13297-->Cantidad informacion: 2.910827305801949
+Suceso: e-->Apariciones: 33111-->Probabilidad: 0.33111-->Cantidad informacion: 1.594617512021525
+La entropia es 1.9070685944271335

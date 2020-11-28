@@ -12,11 +12,11 @@ Resultados Practicos de la secuencia generada:
 
 La cantidad de informacion es: 
 
-Suceso: a-->Apariciones: 8377-->Probabilidad: 0.08377-->Cantidad informacion: 3.5774225162587516
-Suceso: b-->Apariciones: 4590-->Probabilidad: 0.0459-->Cantidad informacion: 4.445362036135641
-Suceso: c-->Apariciones: 52948-->Probabilidad: 0.52948-->Cantidad informacion: 0.9173519044294463
-Suceso: d-->Apariciones: 5210-->Probabilidad: 0.0521-->Cantidad informacion: 4.262572817270941
-Suceso: e-->Apariciones: 9908-->Probabilidad: 0.09908-->Cantidad informacion: 3.3352623211904486
-Suceso: f-->Apariciones: 15711-->Probabilidad: 0.15711-->Cantidad informacion: 2.6701530842663046
-Suceso: g-->Apariciones: 3256-->Probabilidad: 0.03256-->Cantidad informacion: 4.940755490170565
-La entropia es 2.1223588723953233
+Suceso: a-->Apariciones: 8426-->Probabilidad: 0.08426-->Cantidad informacion: 3.5690082738745574
+Suceso: b-->Apariciones: 4619-->Probabilidad: 0.04619-->Cantidad informacion: 4.436275643587775
+Suceso: c-->Apariciones: 52839-->Probabilidad: 0.52839-->Cantidad informacion: 0.9203249316465393
+Suceso: d-->Apariciones: 5250-->Probabilidad: 0.0525-->Cantidad informacion: 4.251538766995965
+Suceso: e-->Apariciones: 9915-->Probabilidad: 0.09915-->Cantidad informacion: 3.334243417320602
+Suceso: f-->Apariciones: 15761-->Probabilidad: 0.15761-->Cantidad informacion: 2.6655690214336794
+Suceso: g-->Apariciones: 3190-->Probabilidad: 0.0319-->Cantidad informacion: 4.97029976578458
+La entropia es 2.124395615858021

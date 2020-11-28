@@ -1,4 +1,4 @@
-package paquete;
+package paquete.PrimeraParte;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -78,8 +78,12 @@ public class ClassMakarov {
         }
     }
     private void calcularVecEstacionario(int N,double exactitud){
-        
-       
+        double[][] mataux2=new double[this.matTransitiva[0].length][this.matTransitiva[0].length];
+        for(int i=0;i<mataux2.length;i++){
+            for(int j=0;j<mataux2.length;j++){
+                mataux2[i][j]=this.matTransitiva[i][j];
+            }
+        }
         for(int t=0; t<N; t++) {
     		double[][]mataux= new double[this.matTransitiva[0].length][this.matTransitiva[0].length];
     		for(int i=0; i<this.matTransitiva[0].length; i++) {
@@ -116,6 +120,11 @@ public class ClassMakarov {
                 vecEstacionario.add(matTransitiva[k][1]);
             }
         }
+        for(int n=0;n<mataux2.length;n++){
+            for(int m=0;m<mataux2.length;m++){
+                this.matTransitiva[n][m]=mataux2[n][m];
+            }
+        }
     }
     private double[][] calcularCantidadInformacion(){
         int filas=this.matTransitiva[0].length;
@@ -123,7 +132,11 @@ public class ClassMakarov {
         double matCantidadInformacion[][]=new double[filas][columnas];
         for(int i=0;i<filas;i++){
             for(int j=0;j<columnas;j++){
-                matCantidadInformacion[i][j]=-Math.log(this.matTransitiva[i][j])/Math.log(2);
+                if(this.matTransitiva[i][j]==0){
+                    matCantidadInformacion[i][j]=0;
+                }else{
+                    matCantidadInformacion[i][j]=-Math.log(this.matTransitiva[i][j])/Math.log(2);
+                }
             }
         }
         return matCantidadInformacion;
@@ -146,8 +159,9 @@ public class ClassMakarov {
         double vecSuma[]=new double[filas];
         double matAux[][]=calcularMatTranXCantInfo();
         for(int i=0;i<filas;i++){
+            vecSuma[i]=0;
             for(int j=0;j<columnas;j++){
-                vecSuma[i]+=matAux[i][j];
+                vecSuma[i]+=matAux[j][i];
             }
         }
         return vecSuma;

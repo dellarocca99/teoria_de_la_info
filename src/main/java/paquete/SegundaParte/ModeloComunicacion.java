@@ -1,0 +1,72 @@
+package paquete.SegundaParte;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ModeloComunicacion {
+    List<String> simbolos;
+    List<Double> probabilidades;
+    private Emisor emisor;
+    private Receptor receptor;
+    private Codificador_Compresor cod_com;
+    private Canal canal;
+    private Ruido ruido;
+
+    public ModeloComunicacion() {
+        this.ruido=new Ruido();
+        this.cod_com=new Codificador_Compresor();
+        this.receptor=new Receptor(cod_com);
+        this.canal=new Canal(receptor,ruido);
+        this.emisor=new Emisor(cod_com,canal);
+    }
+
+    public void iniciarSimulacionEnvioMensaje(String nombreArchivo,String tipoCodificacion){
+        this.emisor.prepararMensaje(nombreArchivo);
+        this.cod_com.prepararCodificador(this.emisor.getMensaje(),tipoCodificacion);
+        this.emisor.enviarMensaje();
+        this.writeFile(editarNombreArchivoCodificacion(nombreArchivo,tipoCodificacion),this.canal.getMensaje());
+        this.writeFile(editarNombreArchivoResultado(nombreArchivo,tipoCodificacion),this.receptor.getMensaje());
+        String mensaje="El rendimiento es: "+this.cod_com.calcularRendimiento()+"\n";
+        mensaje+="La redundancia es: "+this.cod_com.calcularRedundancia()+"\n";
+        mensaje+="La tasa de compresion es: "+this.cod_com.calcularTasaCompresion()+"\n";
+        this.writeFile(editarNombreArchivoParametros(nombreArchivo,tipoCodificacion),mensaje);
+    }
+
+    public void iniciarCalculosCanal(String nombreArchivo){
+        this.canal.readFile(nombreArchivo);
+        this.canal.realizarCalculos();
+        String escribir=this.canal.informacionCanal();
+        this.writeFile(editarNombreArchivoCanal(nombreArchivo),escribir);
+    }
+    private void writeFile(String nombreArchivo,String mensaje){
+        FileWriter fw=null;
+        PrintWriter pw=null;
+        try {
+            fw = new FileWriter(".\\"+nombreArchivo);
+            pw = new PrintWriter(fw);
+            pw.println(mensaje);
+            if (fw!=null){
+                fw.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String editarNombreArchivoCodificacion(String mensaje,String tipo){
+        return mensaje.replace(".txt","-codificacion-"+tipo+".txt");
+    }
+    private String editarNombreArchivoResultado(String mensaje,String tipo){
+        return mensaje.replace(".txt","-decodificacion-"+tipo+".txt");
+    }
+    private String editarNombreArchivoParametros(String mensaje,String tipo){
+        return mensaje.replace(".txt","-parametros-"+tipo+".txt");
+    }
+
+    private String editarNombreArchivoCanal(String nombre){
+        return nombre.replace(".txt","-resultados-"+".txt");
+    }
+}
