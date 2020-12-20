@@ -7,12 +7,28 @@ public class NodoAux implements Comparable<NodoAux>{
     private String codificacion;
     private Double probabilidad;
     private Stack<NodoAux> pilaSiguiente;
+    private NodoAux izq;
+    private NodoAux der;
     //CONSTRUCTOR
     public NodoAux(String simbolo, String codificacion, Double probabilidad) {
         this.simbolo = simbolo;
         this.codificacion = codificacion;
         this.probabilidad = probabilidad;
         this.pilaSiguiente = new Stack<NodoAux>();
+        this.izq=null;
+        this.der=null;
+    }
+
+    public NodoAux(NodoAux izq, NodoAux der){
+        this(izq.simbolo+" , "+der.simbolo,"",izq.probabilidad+der.probabilidad);
+        this.izq=izq;
+        this.der=der;
+    }
+    public NodoAux getIzq(){
+        return this.izq;
+    }
+    public NodoAux getDer(){
+        return this.der;
     }
     //GETTER Y SETTER
     public String getSimbolo() {
@@ -56,14 +72,14 @@ public class NodoAux implements Comparable<NodoAux>{
 
     public double probNodo(){
         double acum=this.probabilidad;
-        Stack<NodoAux> aux=new Stack<NodoAux>();
-        while(!this.pilaSiguiente.empty()){
-            acum+=this.pilaSiguiente.peek().getProbabilidad();
-            aux.push(pilaSiguiente.pop());
-        }
-        while(!aux.empty()){
-            this.pilaSiguiente.push(aux.pop());
-        }
+        //Stack<NodoAux> aux=new Stack<NodoAux>();
+        //while(!this.pilaSiguiente.empty()){
+        //    acum+=this.pilaSiguiente.peek().getProbabilidad();
+        //    aux.push(pilaSiguiente.pop());
+        //}
+        //while(!aux.empty()){
+        //    this.pilaSiguiente.push(aux.pop());
+        //}
         return acum;
     }
     public void armarCodificacion(String bit){
@@ -88,7 +104,31 @@ public class NodoAux implements Comparable<NodoAux>{
             if(aux2>aux1){
                 return -1;
             } else {
-                return 0;
+                if(this.codificacion.length()<o.codificacion.length()){
+                    return 1;
+                }else{
+                    if(this.codificacion.length()>o.codificacion.length()){
+                        return -1;
+                    }else{
+                        if(this.izq!=null && this.der!=null && o.izq==null && o.der==null){
+                            return 1;
+                        }else{
+                            if(this.izq==null && this.der==null && o.izq!=null && o.der!=null){
+                                return -1;
+                            }else{
+                                if(this.simbolo.charAt(0)>o.simbolo.charAt(0)){
+                                    return 1;
+                                }else{
+                                    if(this.simbolo.charAt(0)<o.simbolo.charAt(0)){
+                                        return -1;
+                                    }else{
+                                        return 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

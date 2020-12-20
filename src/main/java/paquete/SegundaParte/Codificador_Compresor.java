@@ -1,15 +1,14 @@
 package paquete.SegundaParte;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class Codificador_Compresor {
     private List<NodoAux> vectorAuxiliar;
     private String tipoCodificacion;
     private String mensajeSinCodificar;
     private String mensajeCodificado;
+    private List<NodoAux> tree;
     //Constructor
     public Codificador_Compresor() {
         this.vectorAuxiliar=new ArrayList<NodoAux>();
@@ -67,23 +66,37 @@ public class Codificador_Compresor {
     //CODIFICACION HUFFMAN
     private void huffmanArmadoPila(){
         Collections.sort(this.vectorAuxiliar);
-        while(this.vectorAuxiliar.size()!=1){
-            this.vectorAuxiliar.get(1).pushNodoAux(this.vectorAuxiliar.remove(0));
+        while(this.vectorAuxiliar.size()>1){
+            NodoAux aux=new NodoAux(this.vectorAuxiliar.get(0),this.vectorAuxiliar.get(1));
+            this.vectorAuxiliar.remove(0);
+            this.vectorAuxiliar.remove(0);
+            this.vectorAuxiliar.add(aux);
+            //this.vectorAuxiliar.get(1).pushNodoAux(this.vectorAuxiliar.remove(0));
             Collections.sort(this.vectorAuxiliar);
         }
     }
-    private void huffmanDesarmadoPila(int tamanoInicial){
+    private void huffmanDesarmadoPila(NodoAux raiz,String codificacion){
+        if(raiz!=null){
+            this.huffmanDesarmadoPila(raiz.getIzq(),codificacion+"0");
+            if(raiz.getIzq()==null && raiz.getDer()==null){
+                raiz.setCodificacion(codificacion);
+                this.vectorAuxiliar.add(raiz);
+            }
+            this.huffmanDesarmadoPila(raiz.getDer(),codificacion+"1");
+        }
+    }
+    private void huffmanDesarmadoPIla(int tamanoInicial){
         int i;
         while(this.vectorAuxiliar.size()!=tamanoInicial){
             i=0;
+            //Collections.sort(this.vectorAuxiliar);
             while(i<this.vectorAuxiliar.size()){
                 NodoAux aux=this.vectorAuxiliar.get(i).popNodoAux();
                 if(aux!=null) {
                     this.vectorAuxiliar.add(aux);
                     this.vectorAuxiliar.get(i).armarCodificacion("0");
                     aux.armarCodificacion("1");
-                    Collections.sort(this.vectorAuxiliar);
-                    i=this.vectorAuxiliar.size();
+                    //i=this.vectorAuxiliar.size();
                 }
                 i++;
             }
@@ -92,7 +105,8 @@ public class Codificador_Compresor {
     private void generarCodificacionHuffman(){
         int tamanoInicial=this.vectorAuxiliar.size();
         this.huffmanArmadoPila();
-        this.huffmanDesarmadoPila(tamanoInicial);
+        this.huffmanDesarmadoPila(this.vectorAuxiliar.get(0),"");
+        this.vectorAuxiliar.remove(0);
     }
     //CODIFICACION SHANON
     private void separarEnDos(List<NodoAux> lista){
@@ -135,8 +149,10 @@ public class Codificador_Compresor {
     }
     //CODIFICACION RLC
     private void generarCodificacionRLC(){
-        Collections.sort(this.vectorAuxiliar);
+        Comparator c=Collections.reverseOrder();
+        Collections.sort(this.vectorAuxiliar,c);
         for(int i=0;i<this.vectorAuxiliar.size();i++){
+            this.vectorAuxiliar.get(i).armarCodificacion("0");
             for(int j=0;j<i;j++){
                 this.vectorAuxiliar.get(i).armarCodificacion("0");
             }
@@ -322,6 +338,11 @@ public class Codificador_Compresor {
         return 1-this.calcularRendimiento();
     }
     public double calcularTasaCompresion(){
-        return 1.0*this.mensajeSinCodificar.length()*8/this.mensajeCodificado.length();
+        byte[] byts=this.mensajeSinCodificar.getBytes(StandardCharsets.UTF_8);
+        byte[] byts2=this.mensajeCodificado.getBytes(StandardCharsets.UTF_8);
+        int aux1=byts.length;
+        int aux2=byts2.length;
+        return 1.0*aux1*8/aux2;
+        //return 1.0*this.mensajeSinCodificar.length()*8/this.mensajeCodificado.length();
     }
 }

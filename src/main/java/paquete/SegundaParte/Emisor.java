@@ -43,11 +43,20 @@ public class Emisor {
         try {
             f=new File(nombreArchivo);
             fr=new FileReader(f);
-            br=new BufferedReader(fr);
-            String linea;
-            while((linea=br.readLine())!=null){
-                this.mensaje+=linea;
+            //br=new BufferedReader(fr);
+            //String linea;
+            int caracter;
+            caracter=fr.read();
+            //while((linea=br.readLine())!=null){
+            //    this.mensaje+=linea+"\n";
+            //}
+            while(caracter!=-1){
+                if(caracter!='\r'){
+                    this.mensaje+=(char) (caracter);
+                }
+                caracter=fr.read();
             }
+            //this.mensaje=this.mensaje.substring(0,this.mensaje.length()-2);
             if(fr!=null){
                 fr.close();
             }

@@ -1,4 +1,3 @@
-El rendimiento es: 0.9922362564954661
-La redundancia es: 0.007763743504533904
-La tasa de compresion es: 1.7570166067786734
-
+El rendimiento es: 0.9919704711704168
+La redundancia es: 0.008029528829583188
+La tasa de compresion es: 1.7879050091337372

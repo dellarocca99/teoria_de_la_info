@@ -181,23 +181,9 @@ public class Canal {
     }
     private void calcularI_A_B(){
         this.I_A_B=this.entropia_A-this.H_A_B;
-        //double suma=0;
-        //for(int i=0;i<this.matriz_a_b.length;i++){
-        //    for(int j=0;j<this.matriz_a_b[0].length;j++){
-        //        suma+=(this.matriz_a_b[i][j]*this.probSalida.get(j))*(Math.log(this.matriz_a_b[i][j]*this.probSalida.get(j)/(this.probSalida.get(j)*this.probEntrada.get(i)))/Math.log(2));
-        //    }
-        //}
-        //this.I_A_B=suma;
     }
     private void calcularI_B_A(){
         this.I_B_A=this.entropia_B-this.H_B_A;
-        //double suma=0;
-        //for(int i=0;i<this.matriz_a_b.length;i++){
-        //    for(int j=0;j<this.matriz_a_b[0].length;j++){
-        //        suma+=(this.matriz_a_b[i][j]*this.probSalida.get(j))*(Math.log(this.matriz_a_b[i][j]*this.probSalida.get(j)/(this.probSalida.get(j)*this.probEntrada.get(i)))/Math.log(2));
-        //    }
-        //}
-        //this.I_A_B=suma;
     }
     private void calcularEntropiaAfin(){
         double suma=0;
