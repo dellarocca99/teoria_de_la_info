@@ -12,16 +12,16 @@ public class Canal {
 
     private List<Double> probEntrada;
     private List<Double> probSalida;
-    double [][] matriz_b_a;
-    double [][] matriz_a_b;
+    private double [][] matriz_b_a;
+    private double [][] matriz_a_b;
 
-    double entropia_A;
-    double entropia_B;
-    double H_A_B;
-    double H_B_A;
-    double I_A_B;
-    double I_B_A;
-    double entropiaAfin_AB;
+    private double entropia_A;
+    private double entropia_B;
+    private double H_A_B;
+    private double H_B_A;
+    private double I_A_B;
+    private double I_B_A;
+    private double entropiaAfin_AB;
 
 
     //CONSTRUCTOR
@@ -47,6 +47,22 @@ public class Canal {
     }
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public List<Double> getProbEntrada() {
+        return probEntrada;
+    }
+
+    public List<Double> getProbSalida() {
+        return probSalida;
+    }
+
+    public double[][] getMatriz_b_a() {
+        return matriz_b_a;
+    }
+
+    public double[][] getMatriz_a_b() {
+        return matriz_a_b;
     }
 
     public void moverMensaje(String mensaje){

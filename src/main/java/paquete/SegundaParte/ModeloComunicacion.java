@@ -26,21 +26,25 @@ public class ModeloComunicacion {
         this.emisor.prepararMensaje(nombreArchivo);
         this.cod_com.prepararCodificador(this.emisor.getMensaje(),tipoCodificacion);
         this.emisor.enviarMensaje();
-        this.writeFile(editarNombreArchivoCodificacion(nombreArchivo,tipoCodificacion),this.canal.getMensaje());
-        this.writeFile(editarNombreArchivoResultado(nombreArchivo,tipoCodificacion),this.receptor.getMensaje());
-        this.writeFile(editarNombreArchivoTabla(nombreArchivo,tipoCodificacion),armarStringCodificacion(this.cod_com.getVectorAuxiliar()));
+        this.writeFile(editarNombreArchivoCodificaciones(nombreArchivo,tipoCodificacion,"codificacion"),this.canal.getMensaje());
+        this.writeFile(editarNombreArchivoCodificaciones(nombreArchivo,tipoCodificacion,"decodificacion"),this.receptor.getMensaje());
+        this.writeFile(editarNombreArchivoCodificaciones(nombreArchivo,tipoCodificacion,"tabla"),armarStringCodificacion(this.cod_com.getVectorAuxiliar()));
         String mensaje="El rendimiento es: "+this.cod_com.calcularRendimiento()+"\n";
         mensaje+="La redundancia es: "+this.cod_com.calcularRedundancia()+"\n";
         mensaje+="La tasa de compresion es: "+this.cod_com.calcularTasaCompresion()+"\n";
-        this.writeFile(editarNombreArchivoParametros(nombreArchivo,tipoCodificacion),mensaje);
+        this.writeFile(editarNombreArchivoCodificaciones(nombreArchivo,tipoCodificacion,"parametros"),mensaje);
     }
 
     public void iniciarCalculosCanal(String nombreArchivo){
         this.canal.readFile(nombreArchivo);
         this.canal.realizarCalculos();
-        String escribir=this.canal.informacionCanal();
-        this.writeFile(editarNombreArchivoCanal(nombreArchivo),escribir);
+        this.writeFile(editarNombreArchivoCanal(nombreArchivo,"resultado"),this.canal.informacionCanal());
+        this.writeFile(editarNombreArchivoCanal(nombreArchivo,"probEntrada"),armarProb(this.canal.getProbEntrada()));
+        this.writeFile(editarNombreArchivoCanal(nombreArchivo,"probSalida"),armarProb(this.canal.getProbSalida()));
+        this.writeFile(editarNombreArchivoCanal(nombreArchivo,"matrizAB"),armarMatriz(this.canal.getMatriz_a_b()));
+        this.writeFile(editarNombreArchivoCanal(nombreArchivo,"matrizBA"),armarMatriz(this.canal.getMatriz_b_a()));
     }
+
     private void writeFile(String nombreArchivo,String mensaje){
         FileWriter fw=null;
         PrintWriter pw=null;
@@ -91,20 +95,33 @@ public class ModeloComunicacion {
         }
         return msj;
     }
+    private String armarProb(List<Double> list){
+        String mensaje="";
+        Iterator<Double> it= list.iterator();
+        Double aux;
+        int i=1;
+        while(it.hasNext()){
+            aux=it.next();
+            mensaje+=String.valueOf(i)+"\tProb: "+String.valueOf(aux)+"\n";
+            i+=1;
+        }
+        return mensaje;
+    }
+    private String armarMatriz(double [][] matriz){
+        String mensaje="";
+        for(int i=0;i<matriz.length;i++){
+            for(int j=0;j<matriz[0].length;j++){
+                mensaje+=String.valueOf(matriz[i][j])+" ";
+            }
+            mensaje+="\n";
+        }
+        return mensaje;
+    }
 
-    private String editarNombreArchivoCodificacion(String mensaje,String tipo){
-        return mensaje.replace(".txt","-codificacion-"+tipo+".txt");
+    private String editarNombreArchivoCodificaciones(String mensaje,String tipo,String tipoArchivo){
+        return mensaje.replace(".txt","-"+tipoArchivo+"-"+tipo+".txt");
     }
-    private String editarNombreArchivoResultado(String mensaje,String tipo){
-        return mensaje.replace(".txt","-decodificacion-"+tipo+".txt");
-    }
-    private String editarNombreArchivoParametros(String mensaje,String tipo){
-        return mensaje.replace(".txt","-parametros-"+tipo+".txt");
-    }
-    private String editarNombreArchivoTabla(String mensaje,String tipo){
-        return mensaje.replace(".txt","-Tabla-"+tipo+".txt");
-    }
-    private String editarNombreArchivoCanal(String nombre){
-        return nombre.replace(".txt","-resultados-"+".txt");
+    private String editarNombreArchivoCanal(String nombre,String tipoArchivo){
+        return nombre.replace(".txt","-"+tipoArchivo+"-"+".txt");
     }
 }

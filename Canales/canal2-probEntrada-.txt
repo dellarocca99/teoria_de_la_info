@@ -1,0 +1,5 @@
+1	Prob: 0.1
+2	Prob: 0.2
+3	Prob: 0.1
+4	Prob: 0.5
+5	Prob: 0.1
