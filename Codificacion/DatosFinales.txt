@@ -1,0 +1,6 @@
+La codificacion es: 
+00 01 10 11 
+La entropia es 1.8464393446710154
+La longitud media es 2.0
+El resultado de la ecuacion de kraft es 1.0
+Es compacto
